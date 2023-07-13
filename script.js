@@ -1,29 +1,52 @@
-var start = confirm("Would you like to take a quiz?")
-var timerEl = document.getElementById('countdown') 
-var highscore= document.getElementById('highscore')
+var questions = [{
+
+    question1: "What is not one of the basic Data Types in Javascript?",
+    a: [{text:"Boolean", isCorrect: false},
+    {text: "String", isCorrect: false},
+    {text:"Array", isCorrect: true},
+    {text:"Number", isCorrect: false}
+    ]
+    },
+    {
 
 
-while (true) {  
-   if(confirm("Would you like to take a quiz?")) {
-    console.log ("Continuing...")
+    question2:"What symbol is used to assign a variable?",
+    a: [{text: "<", isCorrect: false},
+    {text: "=", isCorrect: true},
+    {text: "*", isCorrect: false},
+    {text: "&", isCorrect: false},
+    ]
+    },
+    {
 
-   break;
+    question3: "What is this an example of? answerButton",
+    a:[{text: "A variable", isCorrect: false},
+    {text: "An object", isCorrect: false},
+    {text: "An array", isCorrect: false},
+    {text: "Camel casing", isCorrect: true},
+    ]
+    }
+    ]
 
-   } else { 
-    console.log ("Cancelled");
-    continue;
-   }
-}
+
+var timerEl = document.getElementById('#countdown') 
+var highscore= document.getElementById('#highscore')
+var start = document.getElementById("#btnStart")
+var buttonAnswer = document.querySelector(".btnAnswer")
 
 function countdown () {
-    var timeLeft = 5;
+    var timeLeft = 60;
 
     var timeInterval = setInterval(function(){
         if (timeLeft >= 0) {
             timerEl.textContent = "Time: " + timeLeft;
-            timeLeft-- 
+            timeLeft--
+             
         }
-        else if(boolean, string, number === true){
+        
+
+
+       /* else if(boolean, string, number === true){
             timeLeft - 10
         }
         else {
@@ -39,13 +62,16 @@ function countdown () {
         } else {
             console.log ("No");
             window.location.reload();
-        }
+        }*/
           
-        }
+        
 }, 1000);
     
 }
 countdown ()
+
+
+
 
 function buttonClick() {
     var boolean = document.getElementById('boolean')
@@ -55,7 +81,7 @@ function buttonClick() {
     //var button = doument.getElement("button")
      //boolean.value = button;
     if(boolean === true) {
-        return timeLeft -10
+         timeLeft -10
     }
 
     if(string === true) {
