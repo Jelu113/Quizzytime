@@ -1,5 +1,7 @@
 body {
    background-color: rgb(120, 120, 164);
+   display:flex;
+   justify-content:center;
 }
 
 
@@ -9,6 +11,7 @@ header {
     color:white;
     display: flex;
     justify-content: center;
+    align-items:flex-end
     
 }
 
@@ -28,34 +31,46 @@ h1 {
     padding-right: 1050px;
     padding-top:25px;
 }
-
+#btnStart {
+      display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: space-around;
+     margin-bottom:50px;
+     
+}
 .button {
-     /*background-color:rgb(120, 120, 164);*/
      display: flex;
      flex-direction: column;
      align-items: center;
      justify-content:space-around;
      height: 300px;
+     margin-bottom: 125px;
     
 
 }
-.question {
+.questions {
     background-color:rgb(89, 146, 146);
     display: flex;
     flex-direction: column;
     border:solid 2px black;
     border-radius:20px;
+    width:500px;
+    height:600px;
+    justify-content:end;
+    color:white;
+   
 }
 
 P { 
    font-size:30px;
    color: white;
-   position: relative;
-   padding-left: 650px;
+   
+   padding: 50px;
 }
 
 
-button{
+button {
     color:white;
     background-color:rgb(63, 111, 111);
     height: 50px;
@@ -63,6 +78,7 @@ button{
     font-size: 35px;
     border-radius: 20px;  
     border: solid 2px black;
+    
 }
 
 .btnAnswer:hover{
@@ -76,4 +92,9 @@ button{
 
 .view:hover {
     font-size: 30px;
+}
+
+#btnStart:hover {
+    height:60px;
+    width: 210px
 }
