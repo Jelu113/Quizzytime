@@ -7,7 +7,6 @@ var questions = [{
     correctAnswer: "Array"
 
 },
-
 {
 
     question: "What symbol is used to assign a variable?",
@@ -20,9 +19,7 @@ var questions = [{
     correctAnswer: "Camel casing"
 
 }
-
 ]
-
 
 var timerEl = document.getElementById('countdown')
 var highscore = document.getElementById('highscore')
@@ -30,7 +27,13 @@ var start = document.getElementById("btnStart")
 var buttonAnswer = document.querySelectorAll(".btnAnswer")
 var questionIndex = 0
 
+
+
 function displayQuestion() {
+    for (var i = 0; i < buttonAnswer.length; i++) {
+
+        buttonAnswer[i].addEventListener("click", submitAnswer); 
+    }
     var question = document.querySelector(".question")
     question.textContent = questions[questionIndex].question
 
@@ -57,7 +60,7 @@ function displayQuestion() {
             } else {
                 timerEl.textContent = "";
                 clearInterval(timeInterval);
-                // displayMessage() //create function to say they lost and ask to play again
+                
             }
 
         }, 1000);
@@ -66,11 +69,19 @@ function displayQuestion() {
     countdown()
 }
 
-
+// use event.target in an if stament to check if it matches questions[questionIndex].correctAnswer
+// if correct add to score
+// if incorrect don't add to score
+function submitAnswer(event) {
+    event.preventDefault()
+    console.log(event.target.textContent)
+    questionIndex++
+    displayQuestion()
+}
+// displayMessage() //create function to say they lost and ask to play again
+//choose correctAnswer and save that information
 //create a function to -10 seconds the time for wrong answers
-//create way to store the correct and incorrect answers and display them
-//creat a next button or a way to move from one screen to the next. 
-start.addEventListener("click", displayQuestion);
 
-// for (var i = 0; i = buttonAnswer; i++)
-//    .addEventListener ("click", btnAnswer)
+//create a next button or a way to move from one screen to the next. 
+start.addEventListener("click", displayQuestion);
+console.log(buttonAnswer.length)
