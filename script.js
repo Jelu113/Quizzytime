@@ -25,15 +25,19 @@ var timerEl = document.getElementById('countdown')
 var highscore = document.getElementById('highscore')
 var start = document.getElementById("btnStart")
 var buttonAnswer = document.querySelectorAll(".btnAnswer")
+var question = document.querySelectorAll(".question")
 var questionIndex = 0
+var displayMessage = "Please Try again"
+
+var currentQuestion = questions[questionIndex];
 
 
 
 function displayQuestion() {
     for (var i = 0; i < buttonAnswer.length; i++) {
-
-        buttonAnswer[i].addEventListener("click", submitAnswer); 
+        buttonAnswer[i].addEventListener("click", submitAnswer);
     }
+    
     var question = document.querySelector(".question")
     question.textContent = questions[questionIndex].question
 
@@ -49,7 +53,27 @@ function displayQuestion() {
     var btnAnswer4 = document.querySelector(".btnAnswer4")
     btnAnswer4.textContent = questions[questionIndex].answers[3];
 
+}
+
+function checkAnswer() {
+
+}
+// use event.target in an if statement to check if it matches questions[questionIndex].correctAnswer
+// if correct add to score
+// if incorrect don't add to score
+function submitAnswer(event) {
+    event.preventDefault()
+    console.log(event.target.textContent)
+    questionIndex++
+    displayQuestion()
+        
+     
+ }
+    // displayMessage() //create function to say they lost and ask to play again
+    //choose correctAnswer and save that information
+    //create a function to -10 seconds the time for wrong answers
     function countdown() {
+
         var timeLeft = 60;
         var timeInterval = setInterval(function () {
 
@@ -60,28 +84,20 @@ function displayQuestion() {
             } else {
                 timerEl.textContent = "";
                 clearInterval(timeInterval);
-                
+
             }
 
         }, 1000);
 
     }
-    countdown()
-}
 
-// use event.target in an if stament to check if it matches questions[questionIndex].correctAnswer
-// if correct add to score
-// if incorrect don't add to score
-function submitAnswer(event) {
-    event.preventDefault()
-    console.log(event.target.textContent)
-    questionIndex++
-    displayQuestion()
-}
-// displayMessage() //create function to say they lost and ask to play again
-//choose correctAnswer and save that information
-//create a function to -10 seconds the time for wrong answers
 
-//create a next button or a way to move from one screen to the next. 
-start.addEventListener("click", displayQuestion);
-console.log(buttonAnswer.length)
+    function callTwo() {
+        countdown()
+        displayQuestion()
+    }
+
+    start.addEventListener("click", callTwo);
+    //buttonAnswer.addEventListener("click", correctAnswer)
+
+    console.log(buttonAnswer.length)
