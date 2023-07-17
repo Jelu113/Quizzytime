@@ -66,6 +66,10 @@ var questions = [
   function endQuiz() {
     clearInterval(timeInterval);
     var finalScore = score;
+    var playerName = prompt("Enter your name:");
+    var highScores = loadHighScores();
+    highScores.push({ name: playerName, score: finalScore });
+    saveHighScores(highScores);
     var endMessage = "Quiz ended. Your score is: " + finalScore;
     console.log(endMessage);
   }
@@ -91,5 +95,34 @@ var questions = [
   }
   
   start.addEventListener("click", callTwo);
+  
+  function saveHighScores(highScores) {
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+  }
+
+  function loadHighScores() {
+    var highScores = localStorage.getItem("highScores");
+    if (highScores) {
+      return JSON.parse(highScores);
+    } else {
+      return [];
+    }
+  }
+
+  function displayHighScores() {
+    var highScores = loadHighScores();
+    // Sort the high scores in descending order
+    highScores.sort(function (a, b) {
+      return b.score - a.score;
+    });
+    // Display the high scores
+    var highScoresList = "";
+    for (var i = 0; i < highScores.length; i++) {
+      highScoresList += highScores[i].name + ": " + highScores[i].score + "\n";
+    }
+    alert("High Scores:\n" + highScoresList);
+  }
+
+  highscore.addEventListener("click", displayHighScores);
   
   console.log(buttonAnswer.length);
