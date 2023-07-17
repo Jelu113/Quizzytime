@@ -2,7 +2,7 @@
 
 https://jelu113.github.io/Quizzytime/
 
-![Alt text](image.png)
+![Alt text](image-1.png)
 
 
 
