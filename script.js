@@ -22,7 +22,7 @@ var questions = [
   var buttonAnswer = document.querySelectorAll(".btnAnswer");
   var question = document.querySelectorAll(".question");
   var questionIndex = 0;
-  //var displayMessage = "Please Try again";
+  
   var score = 0;
   var timeInterval;
   
@@ -79,7 +79,29 @@ var questions = [
     highScores.push({ name: playerName, score: finalScore });
     saveHighScores(highScores);
     var endMessage = "Quiz ended. Your score is: " + finalScore;
-    console.log(endMessage);
+    alert(endMessage);
+
+    var playAgain = confirm("Do you want to play again?");
+    if (playAgain) {
+      resetQuiz();
+    } else {
+      var thanksMessage = "Thanks for playing"
+      alert(thanksMessage);
+    }
+  }  
+  
+  function resetQuiz() {
+    // Reset variables and states
+    score = 0;
+    questionIndex = 0;
+  
+    // Reset the timer
+    clearInterval(timeInterval);
+    timerEl.textContent = "";
+  
+    // Start the quiz again
+    countdown();
+    displayQuestion();
   }
   
   function countdown() {
