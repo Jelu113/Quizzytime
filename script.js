@@ -51,10 +51,17 @@ var questions = [
   function submitAnswer(event) {
     event.preventDefault();
     var selectedAnswer = event.target.textContent;
-    var currentQuestion = questions[questionIndex]; // Move this line here
+    var currentQuestion = questions[questionIndex];
+  
     if (selectedAnswer === currentQuestion.correctAnswer) {
       score++;
+    } else {
+      // Subtract 10 seconds from the time
+      var timeLeft = parseInt(timerEl.textContent.split(" ")[1]);
+      timeLeft -= 10;
+      timerEl.textContent = "Time: " + timeLeft;
     }
+  
     questionIndex++;
     if (questionIndex < questions.length) {
       displayQuestion();
@@ -63,10 +70,11 @@ var questions = [
     }
   }
   
+  
   function endQuiz() {
     clearInterval(timeInterval);
     var finalScore = score;
-    var playerName = prompt("Enter your name:");
+    var playerName = prompt("Enter your initials:");
     var highScores = loadHighScores();
     highScores.push({ name: playerName, score: finalScore });
     saveHighScores(highScores);
@@ -124,5 +132,5 @@ var questions = [
   }
 
   highscore.addEventListener("click", displayHighScores);
-  
+
   console.log(buttonAnswer.length);
