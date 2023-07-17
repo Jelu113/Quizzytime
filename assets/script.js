@@ -1,3 +1,5 @@
+
+//set up a questions array full of objects in order to pull the information throughout the app.
 var questions = [
     {
       question: "What is not one of the basic Data Types in Javascript?",
@@ -61,7 +63,7 @@ var questions = [
       timeLeft -= 10;
       timerEl.textContent = "Time: " + timeLeft;
     }
-  
+   //adding the next question to the page.
     questionIndex++;
     if (questionIndex < questions.length) {
       displayQuestion();
@@ -89,7 +91,7 @@ var questions = [
       alert(thanksMessage);
     }
   }  
-  
+
   function resetQuiz() {
     // Reset variables and states
     score = 0;
